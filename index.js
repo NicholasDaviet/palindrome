@@ -8,13 +8,17 @@ function Phrase(content) {
   this.content = content;
 
   this.processor = function() {
-    return this.content.toLowerCase();
+    return this.letters().toLowerCase();
   };
   
   this.processedContent = function processedContent() {
     return this.processor(this.content);
   };
-
+  
+  // Returns the letters in the content.
+  this.letters = function letters() {
+   return (this.content.match(/[a-z]/gi) || []).join("");
+    };
   // Returns true if the phrase is a palindrome, false otherwise.
   this.palindrome = function palindrome() {
     return this.processedContent() === this.processedContent().reverse();
